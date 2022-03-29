@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<div id=container >
+
+<p id="jokes"  >Awesome joke is loading...</p>
+<button id="jokebtn"  > Click me! </button>
+
+
+</div>
+<script>
+
+
+
+
+
+const jokebtn = document.querySelector('#jokes');
+const joke = document.querySelector('#jokebtn');
+
+
+
+
+const runthis = async () =>{
+
+    const setHeader = {
+        headers: {
+            Accept : "application/json"
+        }
+    }
+
+
+ const res =  await fetch('https://icanhazdadjoke.com/',setHeader)
+const data = await res.json();
+jokebtn.innerHTML = data.joke
+
+//  .then((res)=>  res.json() )
+//  .then((data)=>{
+//      jokebtn.innerHTML = data.joke
+//  })
+//  .catch((error)=>{
+//     console.log(error);
+
+//  })
+
+
+}
+
+joke.addEventListener('click',runthis);
+runthis();
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<script>
+
+const container = document.querySelector("#container");
+
+const request = new XMLHttpRequest();
+request.open('GET','https://rest....');
+request.send();
+
+request.addEventListener('load',function(){
+//   const data = this.responseText;
+const [data] = JSON.parse(this.responseText);
+console.log(data);
+// console.log(data.capital);
+
+ const htmldata = `
+<h2> hello there </h2>
+
+`;
+
+container.insertAdjacentElement("afterbegin",htmldata);
+
+
+
+
+
+})
+
+
+</script> -->
+
+
+</body>
+</html>
